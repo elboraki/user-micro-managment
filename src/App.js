@@ -16,6 +16,7 @@ const contentStyle = {
   minHeight: "120",
   lineHeight: "120px",
   color: "#fff",
+
  
 };
 
@@ -36,7 +37,7 @@ class App extends React.Component {
         <Layout>
           <Header style={headerStyle}>Header</Header>
           <Layout hasSider>
-            <Content style={contentStyle}>
+            <Content style={contentStyle} >
               <UserList />
             </Content>
           </Layout>
