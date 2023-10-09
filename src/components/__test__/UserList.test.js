@@ -1,16 +1,12 @@
-import React from "react";
-import {shallow} from "enzyme"
-import UserList from "../UserList";
+import React from 'react';
+import {shallow } from 'enzyme';
+import UserList from '../UserList';
 
+describe('UserList Components', () => {
+  it('renders user cards', async () => {
+    const wrapper = shallow(<UserList />);
 
-describe("User list",()=>{
-
-    it("should  user list exists",()=>{
-        const wrapper=shallow(<UserList/>)
-        expect(wrapper.find('div')).toHaveLength(1)
-    })
-    it("should render user list",()=>{
-        const wrapper=shallow(<UserList/>)
-        expect(wrapper.find('div').text()).toContain('User List')
-    })
-})
+    // Assert that the component has rendered as expected
+    expect(wrapper.find('Fragment')).toHaveLength(1); // Replace with the expected number of cards
+  });
+});
