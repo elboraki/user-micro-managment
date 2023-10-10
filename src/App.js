@@ -4,6 +4,7 @@ import UserList from "./components/UserList";
 import { Layout, Space, Menu } from "antd";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import UserContextProvider from "./contexts/UserContext";
 
 const { Header, Footer, Content } = Layout;
 const headerStyle = {
@@ -29,45 +30,46 @@ const footerStyle = {
 class App extends React.Component {
   render() {
     return (
-      <BrowserRouter>
-        <Space
-          direction="vertical"
-          style={{
-            width: "100%",
-            height: "100%",
-          }}
-        >
-          <Layout>
-            <Header style={headerStyle}>
-              <Menu mode="horizontal">
-                <Menu.Item key="home">
-                  <NavLink activeClassName="activePage" to="/">
-                    Home
-                  </NavLink>
-                </Menu.Item>
-                <Menu.Item key="users">
-                  <NavLink to="/users">Users</NavLink>
-                </Menu.Item>
-                <Menu.Item key="about">
-                  <NavLink to="/about">About</NavLink>
-                </Menu.Item>
-              </Menu>
-            </Header>
-            <Layout hasSider>
-              <Content style={contentStyle}>
-                <Routes>
-                  <Route exact path="/" element={<Home />} />
-                  <Route path="/users" element={<UserList />} />
-                  <Route path="/about" element={<About />} />
-                </Routes>
-              </Content>
+      <UserContextProvider>
+        <BrowserRouter>
+          <Space
+            direction="vertical"
+            style={{
+              width: "100%",
+              height: "100%",
+            }}
+          >
+            <Layout>
+              <Header style={headerStyle}>
+                <Menu mode="horizontal">
+                  <Menu.Item key="home">
+                    <NavLink activeclassname="activePage" to="/">
+                      Home
+                    </NavLink>
+                  </Menu.Item>
+                  <Menu.Item key="users">
+                    <NavLink to="/users">Users</NavLink>
+                  </Menu.Item>
+                  <Menu.Item key="about">
+                    <NavLink to="/about">About</NavLink>
+                  </Menu.Item>
+                </Menu>
+              </Header>
+              <Layout hasSider>
+                <Content style={contentStyle}>
+                  <Routes>
+                    <Route exact path="/" element={<Home />} />
+                    <Route path="/users" element={<UserList />} />
+                    <Route path="/about" element={<About />} />
+                  </Routes>
+                </Content>
+              </Layout>
+
+              <Footer style={footerStyle}>Footer</Footer>
             </Layout>
-
-            <Footer style={footerStyle}>Footer</Footer>
-
-          </Layout>
-        </Space>
-      </BrowserRouter>
+          </Space>
+        </BrowserRouter>
+      </UserContextProvider>
     );
   }
 }

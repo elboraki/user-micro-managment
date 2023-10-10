@@ -1,11 +1,12 @@
+import { Layout,Typography } from "antd";
 import React from "react";
-
+const { Text } = Typography;
 
 const Home=()=>{
     return(
-        <div>
-            Home
-        </div>
+        <Layout>
+           <Text>Home</Text> 
+        </Layout>
     )
 }
 
